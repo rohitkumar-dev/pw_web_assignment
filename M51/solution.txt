@@ -1,0 +1,188 @@
+### Q1. What is RDBMS? Why do industries use RDBMS?
+
+RDBMS (Relational Database Management System)** is a type of database management system (DBMS) that stores data in a structured format, using rows and columns. It allows users to create, update, manage, and retrieve data efficiently. RDBMS uses SQL (Structured Query Language) for database access.
+
+Why industries use RDBMS:
+
+1. Data Integrity: Ensures accuracy and consistency of data through constraints and ACID properties.
+2. Flexibility: Supports complex queries and data manipulation.
+3. Scalability: Can handle large amounts of data and concurrent users.
+4. Data Security: Provides robust security features to protect sensitive data.
+5. Data Relationships: Efficiently manages and enforces relationships between different data entities.
+6. Standardization: SQL is a standardized language, making it easy to find skilled professionals.
+
+### Q2. Explain the relationship data model in depth.
+
+The relational data model organizes data into one or more tables (or "relations") of columns and rows, with a unique key identifying each row. Tables can be linked using foreign keys, which are columns that reference primary keys in other tables.
+
+Key components:
+
+1. Tables: The primary structure, composed of rows and columns.
+2. Rows (Tuples): Represent individual records.
+3. Columns (Attributes): Define the data types and constraints for the data.
+4. Primary Key: A unique identifier for each row.
+5. Foreign Key: A field in one table that uniquely identifies a row in another table, creating a relationship between the two tables.
+6. Constraints: Rules to ensure data integrity, such as NOT NULL, UNIQUE, CHECK, and FOREIGN KEY constraints.
+
+Relationships:
+
+1. One-to-One: Each row in Table A is linked to one row in Table B.
+2. One-to-Many: Each row in Table A is linked to multiple rows in Table B.
+3. Many-to-Many: Rows in Table A are linked to multiple rows in Table B and vice versa, often implemented using a junction table.
+
+### Q3. What is the importance of Relationships in a Database management system? Explain the types of relationships.
+
+Importance of Relationships:**
+
+1. Data Integrity: Ensures consistency and accuracy of data across related tables.
+2. Efficiency: Facilitates efficient data retrieval and manipulation.
+3. Logical Structure: Organizes data in a meaningful way, reflecting real-world entities and relationships.
+4. Reduced Redundancy: Minimizes data duplication by linking related data entities.
+5. Scalability: Simplifies the expansion and modification of database structures.
+
+Types of Relationships:
+
+1. One-to-One (1:1): A single row in one table is related to a single row in another table. Example: Each employee has one employee ID.
+2. One-to-Many (1:M): A single row in one table is related to multiple rows in another table. Example: A customer can have multiple orders.
+3. Many-to-Many (M:M): Multiple rows in one table are related to multiple rows in another table. Example: Students and courses, where students can enroll in multiple courses and each course can have multiple students. Implemented using a junction table.
+
+### Q4. Explain the different types of Keys in RDBMS considering a real-life scenario.
+
+Types of Keys:
+
+1. Primary Key: A unique identifier for each record in a table. Example: A student ID in a university database.
+2. Foreign Key: A field in one table that references the primary key in another table, establishing a relationship. Example: A course enrollment table with a foreign key linking to the student ID in the student table.
+3. Composite Key: A primary key consisting of multiple columns. Example: An order details table using order ID and product ID as a composite key.
+4. Unique Key: Ensures that all values in a column are unique. Example: Social Security Number (SSN) in an employee database.
+5. Candidate Key: A set of attributes that uniquely identify a record, where each attribute could potentially be the primary key. Example: A car's VIN and license plate number.
+6. Super Key: A set of attributes that uniquely identify a record, but may contain extra attributes not necessary for unique identification. Example: (student ID, student name) could be a super key if student ID is unique.
+
+### Q5. Write a short note on Single Responsibility Principle.
+
+The Single Responsibility Principle (SRP) is one of the five SOLID principles of object-oriented programming and design. It states that a class or module should have only one reason to change, meaning it should only have one responsibility or job. This principle promotes separation of concerns, making code more modular, easier to understand, maintain, and extend.
+
+Benefits:
+
+1. Maintainability: Easier to update and fix bugs.
+2. Testability: Simplifies unit testing by focusing on a single functionality.
+3. Reusability: Encourages reusable components.
+4. Scalability: Simplifies code extensions and modifications.
+
+Example:
+
+A class `Invoice` should handle invoice-related operations only, while another class `InvoicePrinter` should handle printing invoices.
+
+### Q6. Explain the different types of errors that could arise in a denormalized database.
+
+Types of Errors in a Denormalized Database:
+
+1. Data Redundancy: Duplication of data, leading to increased storage and maintenance costs.
+2. Update Anomalies: Inconsistencies when updating duplicated data. Example: Updating a customer's address in one place but not in another.
+3. Insertion Anomalies: Difficulty in inserting new data due to missing or redundant data. Example: Inserting order data without customer details.
+4. Deletion Anomalies: Unintended loss of data when deleting records. Example: Deleting a customer record might delete all related orders.
+5. Data Integrity Issues: Challenges in ensuring data consistency and accuracy across the database.
+
+### Q7. What is normalization and what is the need for normalization?
+
+Normalization is the process of organizing a database into tables and columns to minimize redundancy and dependency. It involves dividing large tables into smaller ones and defining relationships between them.
+
+Need for Normalization:
+
+1. Reduce Redundancy: Minimizes duplicate data, saving storage space.
+2. Eliminate Anomalies: Prevents update, insertion, and deletion anomalies.
+3. Ensure Data Integrity: Maintains consistent and accurate data.
+4. Improve Query Performance: Optimizes data retrieval and manipulation.
+5. Maintain Scalability: Facilitates database expansion and modification.
+
+### Q8. List out the different levels of Normalization and explain them in detail.
+
+Normalization Levels:
+
+1. First Normal Form (1NF):
+   - Ensure each column contains atomic (indivisible) values.
+   - Each column must contain only one type of data.
+   - Example: A table with columns for student ID, course ID, and grades.
+
+2. Second Normal Form (2NF):
+   - Meet all 1NF requirements.
+   - Remove partial dependencies; ensure no non-prime attribute is dependent on a part of a candidate key.
+   - Example: Splitting a table into student and course tables, linked by a junction table.
+
+3. Third Normal Form (3NF):
+   - Meet all 2NF requirements.
+   - Remove transitive dependencies; ensure non-prime attributes are dependent only on the candidate keys.
+   - Example: Splitting a student table into student and department tables, removing department details from the student table.
+
+4. Boyce-Codd Normal Form (BCNF):
+   - A stricter version of 3NF.
+   - For every functional dependency, the left-hand side must be a super key.
+   - Example: Ensuring no anomalies by enforcing that every determinant is a candidate key.
+
+5. Fourth Normal Form (4NF):
+   - Meet all BCNF requirements.
+   - Remove multi-valued dependencies.
+   - Example: Splitting a table with multiple independent multi-valued attributes into separate tables.
+
+6. Fifth Normal Form (5NF):
+   - Meet all 4NF requirements.
+   - Decompose tables to eliminate join dependencies.
+   - Example: Splitting tables further to ensure no loss of information when joining tables.
+
+### Q9. What are joins and why do we need them?
+
+Joins are operations in SQL that allow combining rows from two or more tables based on a related column between them. Joins are essential for retrieving data that is spread across multiple tables, enabling comprehensive data analysis and reporting.
+
+Why we need joins:
+
+1. Data Retrieval: Combine related data from different tables.
+2. Data Integrity: Enforce relationships between tables.
+3. Efficiency: Optimize queries by fetching related data in a single operation.
+4. Flexibility: Allow complex queries and data manipulation across multiple tables.
+
+### Q10. Explain the different types of joins?
+
+Types of Joins:
+
+1. Inner Join: Returns only the rows with matching values in both tables.
+   ```sql
+   SELECT a.column1, b.column2
+   FROM tableA a
+   INNER JOIN tableB b ON a.common_column = b.common_column;
+   ```
+
+2. Left Join (Left Outer Join): Returns all rows from the left table and matched rows from the right table. If no match, NULL values are returned for columns from the right table.
+   ```sql
+   SELECT a.column1, b.column2
+   FROM tableA a
+   LEFT JOIN tableB b ON a.common_column = b.common_column;
+   ```
+
+3. 
+
+Right Join (Right Outer Join): Returns all rows from the right table and matched rows from the left table. If no match, NULL values are returned for columns from the left table.
+   ```sql
+   SELECT a.column1, b.column2
+   FROM tableA a
+   RIGHT JOIN tableB b ON a.common_column = b.common_column;
+   ```
+
+4. Full Join (Full Outer Join): Returns all rows when there is a match in either table. If no match, NULL values are returned for columns from the table without a match.
+   ```sql
+   SELECT a.column1, b.column2
+   FROM tableA a
+   FULL OUTER JOIN tableB b ON a.common_column = b.common_column;
+   ```
+
+5. Cross Join: Returns the Cartesian product of the two tables, i.e., all possible combinations of rows.
+   ```sql
+   SELECT a.column1, b.column2
+   FROM tableA a
+   CROSS JOIN tableB b;
+   ```
+
+6. Self Join: A join of a table to itself, used to compare rows within the same table.
+   ```sql
+   SELECT a.column1, b.column2
+   FROM tableA a, tableA b
+   WHERE a.common_column = b.common_column;
+   ```
